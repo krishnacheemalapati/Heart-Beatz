@@ -1,11 +1,12 @@
 from serial import Serial, SerialException
 import mysql.connector
-from mysql.connector import (connection)
 import numpy as np
 from datetime import datetime
 
+start=False
+
 mydb = mysql.connector.connect(
-  host="100.67.31.128",
+  host="localhost",
   user="user",
   password="pass",
   database="workouts"
@@ -26,9 +27,11 @@ else:
 
 heartbeats = [0, 0, 0, 0, 0]
 beatcount = 0
-beattime
 
-while(True):
+line = SObj.readline()
+if line == "ALIVE": start==True
+
+while(start):
     try:
         ReceivedString = SObj.readline()
         if(ReceivedString != 'DEAD'):
@@ -47,7 +50,7 @@ while(True):
 
         else:
             print('User Stoped')
-            break
+            start=False
     except KeyboardInterrupt:
         break
 
