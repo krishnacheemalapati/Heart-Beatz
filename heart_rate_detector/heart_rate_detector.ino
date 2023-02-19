@@ -10,7 +10,7 @@ unsigned long pulseInterval = 0;
 
 const int BUTTON_PIN = A1;
 
-float bpmArray[2] = {0, 0};
+float bpmArray[2] = { 0, 0 };
 
 void setup() {
   Serial.begin(9600);
@@ -22,18 +22,19 @@ int button_count = 0;
 void loop() {
   bool button = digitalRead(BUTTON_PIN);
   if (button == true) {
-    if (button_count == 0){
+    if (button_count == 0) {
       Serial.println("ALIVE");
     }
     button_count++;
   }
 
-  if (button_count == 2){
+  if (button_count == 2) {
     Serial.print("DEAD");
+    Serial.end();
     exit(0);
   }
 
-  if (button_count == 1){
+  if (button_count == 1) {
     reading = analogRead(0);
 
     // Heart beat leading edge detected.
@@ -60,10 +61,10 @@ void loop() {
 
     BPM = (bpmArray[1] + bpmArray[0]) / 2.0;
 
-
+    
     Serial.println(BPM);
     Serial.flush();
-
-    }
-    delay(100);
+      
+  }
+  delay(100);
 }
