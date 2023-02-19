@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from './../Navbar'
 import { useNavigate } from "react-router-dom";
-import mainImg from "./../assets/mainImg.gif"
-import sensors from "./../assets/sensors.png"
-import dashboard from "./../assets/dashboard.png"
+import mainImg from "./../../assets/mainImg.gif"
+import sensors from "./../../assets/sensors.png"
+import dashboard from "./../../assets/dashboard.png"
 
 export default function HomePage() {
   const navigate = useNavigate();
