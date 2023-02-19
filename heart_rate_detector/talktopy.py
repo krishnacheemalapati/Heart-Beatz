@@ -80,10 +80,10 @@ CMA_values = CMA(bpm_data)
 	
 x_data = np.linspace(0, len(CMA_values), len(CMA_values))
 
-plt.plot(x_data[:], CMA_values[:], label='Moving Average')
-#plt.plot(x_data[:], bpm_data[:], label="Data")
+plt.plot(x_data[100:], CMA_values[100:], label='Moving Average')
+#plt.plot(x_data[100:], bpm_data[100:], label="Data")
 plt.legend()
 plt.grid()
 plt.ylim(40, 120)
 plt.show()
-plt.savefig("perfection.png")
+#plt.savefig("perfection.png")
