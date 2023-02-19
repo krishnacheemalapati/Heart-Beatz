@@ -20,7 +20,7 @@ void setup() {
 void loop() {
   bool button = digitalRead(BUTTON_PIN);
   if (button == true){
-    Serial.print("END");
+    Serial.print("DEAD");
     exit(0);
   }
 
