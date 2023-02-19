@@ -337,7 +337,7 @@ svg {
 }
 
 .tenpercent {
-  width: 10vw
+  width: 5vw
 }
 
 .fifteenpercent {
@@ -425,6 +425,7 @@ body {
 .join-button {
   margin-top: 5vh;
   font-size: 1.4vw;
+  max-width: 15vw;
 }
 
 .create-text {
@@ -787,7 +788,7 @@ label {
   transform: translateY(0);
 }
 
-.newbtni {
+.button {
   appearance: none;
   background-color: var(--blue);
   border: 0.5vh solid var(--blue);

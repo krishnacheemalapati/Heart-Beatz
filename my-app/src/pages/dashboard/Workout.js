@@ -12,23 +12,25 @@ export default function Workout(props) {
     }
     const workoutName = props.workoutName;
 
-    const db = mysql.createConnection({
-        host: "localhost",
-        user: "heartbeatz",
-        password: "heartbeatz",
-        database: "heartbeatRatings"
-    });
+    
+    var printlist = JSON.parse()
+    // const db = mysql.createConnection({
+    //     host: "localhost",
+    //     user: "heartbeatz",
+    //     password: "heartbeatz",
+    //     database: "heartbeatRatings"
+    // });
 
-    db.query("SELECT * FROM users WHERE userid=? AND wid=?", 
-        [1, 1], (err, res)=>{
-            if (err){
-                console.error(err)
-            }
-            else{
-                console.log(res)
-            }
-        }
-    )
+    // db.query("SELECT * FROM users WHERE userid=? AND wid=?", 
+    //     [1, 1], (err, res)=>{
+    //         if (err){
+    //             console.error(err)
+    //         }
+    //         else{
+    //             console.log(res)
+    //         }
+    //     }
+    // )
     
     return (
         <div className='single-workout'>

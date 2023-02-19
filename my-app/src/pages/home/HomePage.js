@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './../Navbar'
 import { useNavigate } from "react-router-dom";
-import mainImg from "./../../assets/mainImg.gif"
+import mainImg from "./../../assets/image.png"
 import sensors from "./../../assets/sensors.png"
 import dashboard from "./../../assets/dashboard.PNG"
 

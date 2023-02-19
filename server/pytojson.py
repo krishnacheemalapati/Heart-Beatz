@@ -1,16 +1,16 @@
-import mysql.connector
-import numpy as np
+import mysql.connector as sql
+
 import pandas as pd
+db_connection = sql.connect(host='localhost', port= '3306', database='workouts', user='user', password='pass')
+db_cursor = db_connection.cursor()
+db_cursor.execute('SELECT * FROM tbl_heartbeat')
+table_rows = db_cursor.fetchall()
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="heartbeatz",
-  password="heartbeatz",
-  database="workouts"
-)
+df = pd.DataFrame(table_rows, columns=['userid', 'wid', 'beattime', 'bpm', 'hid'])
 
-sql_query = pd.read_sql("SELECT * FROM tbl_heartbeat", mydb)
 
-df = pd.DataFrame(sql_query, columns = ['userid', 'wid', 'beattime', 'bpm'])
+cols_to_drop = []
+for i in cols_to_drop:
+    df.drop(columns=[i])
 
-df.to_json('jsonfile')
+df.to_json("dfjson")
