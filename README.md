@@ -1,3 +1,4 @@
+#Heart-beatz
 ## Inspiration
 Finding the perfect playlist to accompany a workout has always been a time consuming task. You have to get songs that move at just the right pace, have the optimal vibes to keep you motivated, and so much more holds you back from enjoying your workout. However, that changes now, with HeartBeatz.
 
