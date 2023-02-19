@@ -2,8 +2,9 @@ import React from 'react'
 
 export default function Workout(props) {
     // Figure out how to get stuff from the database
+    const res = [];
     const visualizeData = () => {
-        props.setBubbleChart({ show: true, intents: res.data });
+        props.setChart({ show: true, intents: res.data });
         // Function to generate visualizations
     }
     const workoutName = props.workoutName;
