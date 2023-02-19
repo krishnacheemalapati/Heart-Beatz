@@ -3,6 +3,7 @@ from serial import Serial, SerialException
 import mysql.connector
 import numpy as np
 from datetime import datetime
+from matplotlib import pyplot as plt
 
 start=True
 
@@ -16,7 +17,8 @@ except SerialException as var:
 else:
     print('Serial Port Opened')
 
-heartbeats = [0, 0, 0, 0, 0]
+#heartbeats = [0, 0, 0, 0, 0]
+heartbeats = []
 beatcount = 0
 
 line = SObj.readline()
@@ -31,6 +33,8 @@ mydb = mysql.connector.connect(
   database="workouts"
 )
 
+bpm_data = []
+
 while(start):
     try:
         ReceivedString = SObj.readline()
@@ -39,14 +43,11 @@ while(start):
             temp = temp[:-2]
             now = datetime.now()
             
-            heartbeats[beatcount] = int(float(temp))
-            beatcount+=1
-            if (beatcount >= 5):
-                beatcount = 0
-            
-            mean = np.mean(heartbeats)
+            mean = int(float(temp))
             bt = str(now.hour) +":" + str(now.minute) + ":" + str(now.second)
             x = str(int(mean))
+
+            bpm_data.append(int(x))
             
             mycursor = mydb.cursor()
             
@@ -54,7 +55,7 @@ while(start):
             
             mycursor.execute(pop_client)
             mydb.commit()
-            #print(pop_client)
+            print(x)
         else:
             print('User Stoped')
             start=False
@@ -62,3 +63,27 @@ while(start):
         break
 
 SObj.close()
+
+
+def CMA(v):
+  i = 1
+  moving_averages = []
+  cum_sum = np.cumsum(v);
+  while i <= len(v):
+      window_average = round(cum_sum[i-1] / i, 2)
+      moving_averages.append(window_average)
+      i += 1
+  return moving_averages
+
+
+CMA_values = CMA(bpm_data)
+	
+x_data = np.linspace(0, len(CMA_values), len(CMA_values))
+
+plt.plot(x_data[:], CMA_values[:], label='Moving Average')
+#plt.plot(x_data[:], bpm_data[:], label="Data")
+plt.legend()
+plt.grid()
+plt.ylim(40, 120)
+plt.show()
+plt.savefig("perfection.png")
