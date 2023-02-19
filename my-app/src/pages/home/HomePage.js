@@ -3,7 +3,7 @@ import Navbar from './../Navbar'
 import { useNavigate } from "react-router-dom";
 import mainImg from "./../../assets/mainImg.gif"
 import sensors from "./../../assets/sensors.png"
-import dashboard from "./../../assets/dashboard.png"
+import dashboard from "./../../assets/dashboard.PNG"
 
 export default function HomePage() {
   const navigate = useNavigate();

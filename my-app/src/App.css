@@ -719,7 +719,6 @@ label {
   height: 90%;
   top: 1.5vh;
   left: 49.75%;
-  display: block;
   background-image: -webkit-gradient(linear, left, right, from(rgba(255, 255, 255,1)), to(rgba(255, 255, 255, 0)), color-stop(.5,#333333))
 }
 
