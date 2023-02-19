@@ -7,13 +7,22 @@ unsigned long firstPulseTime = 0;
 unsigned long secondPulseTime = 0;
 unsigned long pulseInterval = 0;
 
+
+const int BUTTON_PIN = A1;
+
 float bpmArray[2] = {0, 0};
 
 void setup() {
   Serial.begin(9600);
+  pinMode(BUTTON_PIN, INPUT);
 }
 
 void loop() {
+  bool button = digitalRead(BUTTON_PIN);
+  if (button == true){
+    Serial.print("END");
+    exit(0);
+  }
 
   reading = analogRead(0);
 
