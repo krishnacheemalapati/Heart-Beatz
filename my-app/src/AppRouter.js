@@ -4,6 +4,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import HomePage from './pages/home/HomePage'
 import LoginPage from './pages/login/LoginPage'
 import About from './pages/about/About'
+import "./App.css";
 
 
 class AppRouter extends React.Component{
