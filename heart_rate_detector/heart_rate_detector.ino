@@ -1,3 +1,5 @@
+
+
 int threshold = 800;
 int reading = 0;
 float BPM = 0.0;
@@ -10,6 +12,7 @@ unsigned long pulseInterval = 0;
 
 const int BUTTON_PIN = A1;
 
+
 float bpmArray[2] = { 0, 0 };
 
 void setup() {
@@ -17,7 +20,9 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT);
 }
 
+
 int button_count = 0;
+// int note_count = 0;
 
 void loop() {
   bool button = digitalRead(BUTTON_PIN);
@@ -56,15 +61,23 @@ void loop() {
     }
     int bpmTemp = (1.0 / pulseInterval) * 60.0 * 1000;
 
+    // Calculating beats per min
     bpmArray[1] = bpmArray[0];
     bpmArray[0] = bpmTemp;
 
     BPM = (bpmArray[1] + bpmArray[0]) / 2.0;
 
-    
     Serial.println(BPM);
     Serial.flush();
-      
+
+    // if (note_count % 10 == 0) {
+    //   int bpm_int = int(BPM * 10);
+    //   tone(3, bpm_int, 500);
+    //   noTone(3);
+    // }
+    // note_count++;
   }
+
+
   delay(100);
 }
